@@ -13,15 +13,15 @@ for letter in inp :
         testo.append(letter)
         lstap=letter
         x=""
-    elif letter ==" ":blank="blank"
     elif letter == "+" or letter == "-" or letter == "*" or letter == "/" or letter == "^":
         if x!="" and lstap==")": testo.append('*')
         if x!="": testo.append(float(x))
         testo.append(letter)
         lstap=letter
         x=""
-    else:
+    elif letter=="0" or letter=="1" or letter=="2" or letter=="3" or letter=="4" or letter=="5" or letter=="6" or letter=="7" or letter=="8" or letter=="9" :
         x=x+letter
+    else:blank="blank"
 if x!="" and lstap==")": testo.append('*')
 if x!="":testo.append(float(x))
 lstap=""
