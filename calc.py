@@ -13,6 +13,7 @@ for letter in inp :
         testo.append(letter)
         lstap=letter
         x=""
+    elif letter ==" ":blank="blank"
     elif letter == "+" or letter == "-" or letter == "*" or letter == "/" or letter == "^":
         if x!="" and lstap==")": testo.append('*')
         if x!="": testo.append(float(x))
