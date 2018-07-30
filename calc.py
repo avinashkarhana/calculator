@@ -25,7 +25,25 @@ for letter in inp :
 if x!="" and lstap==")": testo.append('*')
 if x!="":testo.append(float(x))
 lstap=""
+v=0
+for v in range(0,2):
+    if set([testo[0]]).issubset(set(['+', '-', '/', '*'])):
+        testo.insert(0,0)
+    if set([testo[len(testo)-1]]).issubset(set(['+', '-', '/', '*'])):
+        testo.insert(len(testo)+1,0)
 #input formating END
+
+#expression validation START
+current=""
+lst=""
+for letter in testo:
+    current=letter
+    if  set([current, lst]).issubset(set(['+', '-', '/', '*'])):
+        error=1
+        print("Invalid expression ! i think you added two operators consicutively "+lst+" and "+current +" in your expression." )
+        break
+    lst=current
+#expression validation End
 
 #solve function START
 def slv(test):
@@ -159,6 +177,7 @@ else:
     print("Invalid expression! Please check you brackets.")
     error=1
 #bracket check STOP
-rslt=slv(testo)
+
 if error==0:
+    rslt=slv(testo)
     print("  Your result is : "+str(rslt))
