@@ -15,7 +15,8 @@ But to run GUI you need CLI script in same directry as GUI.
 ScreenShots of Both inerfaces:
         
             1.CLI
-                ![calc_cli_screenshot](https://user-images.githubusercontent.com/34445069/44031770-af27302a-9f22-11e8-97c7-798afdb8373e.png)
+![calc_cli_screenshot](https://user-images.githubusercontent.com/34445069/44031770-af27302a-9f22-11e8-97c7-798afdb8373e.png)
+           
             2. GUI
-                ![calc_gui_screenshot](https://user-images.githubusercontent.com/34445069/44031771-af5f1e36-9f22-11e8-98ee-8257d24ab770.png)
+![calc_gui_screenshot](https://user-images.githubusercontent.com/34445069/44031771-af5f1e36-9f22-11e8-98ee-8257d24ab770.png)
                     
