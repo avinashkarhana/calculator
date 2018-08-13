@@ -1,5 +1,4 @@
-print("Calculator\n########### \n")
-inp=input("Calculation is done in form of expression numbers(Example : 2(4+6)^2/10*2-15*2+(5)(2)(5) in this epression ^2 means power 2 and its Answer would be -40.0 )\n Enter your expression : ")
+inp=""
 def calculator(inp):   
     x=""
     test=[]
@@ -22,7 +21,7 @@ def calculator(inp):
             lstap=letter
             x=""
         #non-numeric character immunity START
-        elif letter=="." or letter=="0" or letter=="1" or letter=="2" or letter=="3" or letter=="4" or letter=="5" or letter=="6" or letter=="7" or letter=="8" or letter=="9" :
+        elif letter=="0" or letter=="." or letter=="1" or letter=="2" or letter=="3" or letter=="4" or letter=="5" or letter=="6" or letter=="7" or letter=="8" or letter=="9" :
             x=x+letter
         else:blank="blank"
         #non-numeric character imunity END
@@ -49,7 +48,7 @@ def calculator(inp):
                 break
             lst=current
         #expression validation End
-
+       
         #solve function START
         def slv(test):
             #setting of value after single calculation in list with function START
@@ -192,6 +191,9 @@ def calculator(inp):
             return(str(rslt))
     else:
             return("No calculations to be made !")
-rs=calculator(inp)
-if rs!="None": print(rs)
-else:print("Invalid Expression !")
+if __name__ == "__main__":
+    print("Calculator\n########### \n")
+    inp=input("Calculation is done in form of expression numbers(Example : 2(4+6)^2/10*2-15*2+(5)(2)(5) in this epression ^2 means power 2 and its Answer would be -40.0 )\n Enter your expression : ")
+    rs=calculator(inp)
+    if rs!="None": print(rs)
+    else:print("Invalid Expression !")
