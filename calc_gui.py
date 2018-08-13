@@ -1,19 +1,20 @@
 from tkinter import *
 from calc_cli import calculator as strcalc
 root=Tk()
+root.title("Expression Calculator")
 heading=Frame(root)
 heading.pack(fill=BOTH)
-lblhead = Label(heading,text="Calculator")
+lblhead = Label(heading,text="Calculator", font=("Times-New-Roman", 28))
 lblhead.pack()
 content=Frame(root)
 content.pack(fill=BOTH)
-lblcontent = Label(heading,text="Type in your expression from Keybord or or provided virtual keys.")
+lblcontent = Label(heading,text="Type in your expression from Keybord or or provided virtual keys.", font=("Arial", 18))
 lblcontent.pack()
-expression = Entry(content)
+expression = Entry(content,font=("Helvetica", 28))
 expression.pack(fill=BOTH)
-
+expression.focus()
 btnframe=Frame(root)
-btnframe.pack(fill=BOTH)
+btnframe.pack(fill=BOTH, expand=True, padx=50, pady=20)
 
 def reset():
     expression.delete(0,'end')
@@ -35,11 +36,10 @@ def equal():
 plus=Button(btnframe,height = 2, width = 10,text="+",command=lambda:insert("+"))
 minus=Button(btnframe,height = 2, width = 10,text="-",command=lambda:insert("-"))
 divide=Button(btnframe,height = 2, width = 10,text="/",command=lambda:insert("/"))
-multiply=Button(btnframe,height = 2, width = 10,text="*",command=lambda:insert("*"))
+multiply=Button(btnframe,height = 2, width = 10,text="x",command=lambda:insert("*"))
 power=Button(btnframe,height = 2, width = 10,text="^",command=lambda:insert("^"))
 lbracket=Button(btnframe,height = 2, width = 10,text="(",command=lambda:insert("("))
 rbracket=Button(btnframe,height = 2, width = 10,text=")",command=lambda:insert(")"))
-equal=Button(btnframe,height = 2, width = 10,text="=",command=equal)
 one=Button(btnframe,height = 2, width = 10,text="1",command=lambda:insert("1"))
 two=Button(btnframe,height = 2, width = 10,text="2",command=lambda:insert("2"))
 three=Button(btnframe,height = 2, width = 10,text="3",command=lambda:insert("3"))
@@ -50,8 +50,10 @@ seven=Button(btnframe,height = 2, width = 10,text="7",command=lambda:insert("7")
 eight=Button(btnframe,height = 2, width = 10,text="8",command=lambda:insert("8"))
 nine=Button(btnframe,height = 2, width = 10,text="9",command=lambda:insert("9"))
 zero=Button(btnframe,height = 2, width = 10,text="0",command=lambda:insert("0"))
+dot=Button(btnframe,height = 2, width = 10,text=".",command=lambda:insert("."))
 reset=Button(btnframe,height = 2, width = 10,text="Reset",command=reset)
 delete=Button(btnframe,height = 2, width = 10,text="Del",command=delete)
+equal=Button(root,text="=",height = 2, width = 48,command=equal)
 #creating Buttons End
 
 #packing buttons with Grid START
@@ -74,7 +76,8 @@ plus.grid(row=1,padx=5,pady=5,ipadx=5,ipady=5,sticky="EW",column=3)
 minus.grid(row=2,padx=5,pady=5,ipadx=5,ipady=5,sticky="EW",column=3)
 multiply.grid(row=3,padx=5,pady=5,ipadx=5,ipady=5,sticky="EW",column=3)
 divide.grid(row=4,padx=5,pady=5,ipadx=5,ipady=5,sticky="EW",column=3)
-equal.grid(row=4,padx=5,pady=5,ipadx=5,ipady=5,sticky="EW",column=2)
+dot.grid(row=4,padx=5,pady=5,ipadx=5,ipady=5,sticky="EW",column=2)
+equal.pack(side=BOTTOM,padx=5,pady=5)
 #packing buttons with Grid END
 
 root.mainloop()
