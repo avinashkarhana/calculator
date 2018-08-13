@@ -1,5 +1,5 @@
 from tkinter import *
-from calc-cli import calculator as strcalc
+from calc_cli import calculator as strcalc
 root=Tk()
 heading=Frame(root)
 heading.pack(fill=BOTH)
