@@ -29,7 +29,7 @@ def insert(num):
     expression.insert(0,str2)
 def equal():
     str1=expression.get()
-    rs=strcalc(str1)
+    rs=calculator(str1)
     expression.delete(0,'end')
     expression.insert(0,rs)
 #creating Buttons START
