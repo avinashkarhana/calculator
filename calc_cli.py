@@ -5,28 +5,35 @@ def calculator(inp):
     testo=[]
     error=0
     lstap=""
+    sym=['+', '-', '/', '*','^']
+    num=['1','2','3','4','5','6','7','8','9','0']
+    decimal=['.']
     #input formating in list START
     for letter in inp :
         if letter == "(" or letter == ")":
             if lstap==")": testo.append('*')
-            if x!="": testo.append(float(x))
+            if x!="" and x!=".": testo.append(float(x))
             if letter=="(" and x!="": testo.append('*')
             testo.append(letter)
-            lstap=letter
             x=""
-        elif letter == "+" or letter == "-" or letter == "*" or letter == "/" or letter == "^":
+        elif letter in sym:
             if x!="" and lstap==")": testo.append('*')
-            if x!="": testo.append(float(x))
+            if x!=""  and x!=".": testo.append(float(x))
             testo.append(letter)
             lstap=letter
             x=""
         #non-numeric character immunity START
-        elif letter=="0" or letter=="." or letter=="1" or letter=="2" or letter=="3" or letter=="4" or letter=="5" or letter=="6" or letter=="7" or letter=="8" or letter=="9" :
-            x=x+letter
+        elif letter in num or letter in decimal:
+            if letter ==".":
+                if "." not in x:
+                    x=x+letter
+            else:
+                x=x+letter
         else:blank="blank"
         #non-numeric character imunity END
+        lstlap=letter
     if x!="" and lstap==")": testo.append('*')
-    if x!="":testo.append(float(x))
+    if x!=""  and x!=".":testo.append(float(x))
     v=0
     if len(testo)>0:
         for v in range(0,2):
@@ -47,8 +54,16 @@ def calculator(inp):
                 return("Invalid expression ! i think you added two operators consicutively "+lst+" and "+current +" in your expression." )
                 break
             lst=current
+        # . after Rbracket validation START
+        ll=""
+        ic=0
+        for letter in testo:
+            if ll==")" and letter not in sym:
+                testo.insert(ic,"*")
+            ll=letter
+            ic=ic+1
+        # . after Rbracket validation END
         #expression validation End
-       
         #solve function START
         def slv(test):
             #setting of value after single calculation in list with function START
