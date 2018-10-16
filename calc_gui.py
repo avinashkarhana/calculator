@@ -15,7 +15,6 @@ expression.pack(fill=BOTH)
 expression.focus()
 btnframe=Frame(root)
 btnframe.pack(fill=BOTH, expand=True, padx=50, pady=20)
-
 def reset():
     expression.delete(0,'end')
 def delete():
@@ -29,9 +28,10 @@ def insert(num):
     expression.insert(0,str2)
 def equal():
     str1=expression.get()
-    rs=calculator(str1)
+    rs,prevc=strcalc(str1)
     expression.delete(0,'end')
     expression.insert(0,rs)
+    prevcalc['text']=prevc
 #creating Buttons START
 plus=Button(btnframe,height = 2, width = 10,text="+",command=lambda:insert("+"))
 minus=Button(btnframe,height = 2, width = 10,text="-",command=lambda:insert("-"))
@@ -53,7 +53,7 @@ zero=Button(btnframe,height = 2, width = 10,text="0",command=lambda:insert("0"))
 dot=Button(btnframe,height = 2, width = 10,text=".",command=lambda:insert("."))
 reset=Button(btnframe,height = 2, width = 10,text="Reset",command=reset)
 delete=Button(btnframe,height = 2, width = 10,text="Del",command=delete)
-equal=Button(root,text="=",height = 2, width = 48,command=equal)
+bequal=Button(root,text="=",height = 2, width = 48,command=equal)
 #creating Buttons End
 
 #packing buttons with Grid START
@@ -77,7 +77,10 @@ minus.grid(row=2,padx=5,pady=5,ipadx=5,ipady=5,sticky="EW",column=3)
 multiply.grid(row=3,padx=5,pady=5,ipadx=5,ipady=5,sticky="EW",column=3)
 divide.grid(row=4,padx=5,pady=5,ipadx=5,ipady=5,sticky="EW",column=3)
 dot.grid(row=4,padx=5,pady=5,ipadx=5,ipady=5,sticky="EW",column=2)
-equal.pack(side=BOTTOM,padx=5,pady=5)
+bequal.pack(side=BOTTOM,padx=5,pady=5)
+prevcalc = Label(heading,text='', font=("Arial", 12))
+prevcalc.pack(side=LEFT)
+expression.bind('<Return>', lambda _: equal())
 #packing buttons with Grid END
 
 root.mainloop()
