@@ -38,9 +38,9 @@ def calculator(inp):
     if len(testo)>0:
         for v in range(0,2):
 
-                if set([testo[0]]).issubset(set(['+', '-', '/', '*'])):
+                if set([testo[0]]).issubset(sym):
                     testo.insert(0,0)
-                if set([testo[len(testo)-1]]).issubset(set(['+', '-', '/', '*'])):
+                if set([testo[len(testo)-1]]).issubset(sym):
                     testo.insert(len(testo)+1,0)
         #input formating END
 
@@ -49,7 +49,7 @@ def calculator(inp):
         lst=""
         for letter in testo:
             current=letter
-            if  set([current, lst]).issubset(set(['+', '-', '/', '*'])):
+            if  set([current, lst]).issubset(sym):
                 error=1
                 return("Invalid expression ! i think you added two operators consicutively "+lst+" and "+current +" in your expression." )
                 break
@@ -65,6 +65,7 @@ def calculator(inp):
         # . after Rbracket validation END
         #expression validation End
         #solve function START
+        print(testo)
         def slv(test):
             #setting of value after single calculation in list with function START
             def setvalue(pos):
@@ -94,7 +95,7 @@ def calculator(inp):
                             x=test[pos-1]/test[pos+1]
                         else:
                             error=1
-                            return("Can Not Divide by Zero !\nCheck your expression.")
+                            return("Can Not Divide by Zero !\nCheck your expression.",True)
                         setvalue(pos)
                         if pos>0 and pos<=len(test) : test[pos-1]=x
             #calculation of / END
@@ -131,7 +132,8 @@ def calculator(inp):
                         setvalue(pos)
                         if pos>0 and pos<=len(test) : test[pos-1]=x
             #calculation of - END
-
+            er=False
+            rr=""
             for element in test:
                 for elememt in test:
                     if(element=="^"):
@@ -139,7 +141,7 @@ def calculator(inp):
             for element in test:
                 for elememt in test:
                     if(element=="/"):
-                        divide()
+                        rr,er=divide()
             for element in test:
                 for elememt in test:
                     if(element=="*"):
@@ -152,7 +154,8 @@ def calculator(inp):
                 for elememt in test:
                     if(element=="-"):
                         sub()
-            if len(test)>0:return(test[0])
+            if len(test)>0 and er==False :return(test[0])
+            else:return(rr)
         #solve function END
 
         #intitial left and right bracket counter START
@@ -200,10 +203,13 @@ def calculator(inp):
             return("Invalid expression! Please check you brackets.")
             error=1
         #bracket check STOP
+        prevc=""
+        for xx in testo:
+                prevc=prevc+str(xx)
         if error==0:
             rslt=slv(testo)
         if error==0:
-            return(str(rslt))
+            return(str(rslt),prevc)
     else:
             return("No calculations to be made !")
 if __name__ == "__main__":
