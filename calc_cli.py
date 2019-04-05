@@ -58,7 +58,7 @@ def calculator(inp):
         ll=""
         ic=0
         for letter in testo:
-            if ll==")" and letter not in sym:
+            if ll==")" and letter not in sym and letter !=")":
                 testo.insert(ic,"*")
             ll=letter
             ic=ic+1
@@ -214,7 +214,7 @@ def calculator(inp):
             return("No calculations to be made !")
 if __name__ == "__main__":
     print("Calculator\n########### \n")
-    inp=input("Calculation is done in form of expression numbers(Example : 2(4+6)^2/10*2-15*2+(5)(2)(5) in this epression ^2 means power 2 and its Answer would be -40.0 )\n Enter your expression : ")
+    inp=input("Calculation is done in form of expression numbers(Example : 2(4+6)^2/10*2-15*2+(5)(2)(5) in this expression ^2 means power 2 and its Answer would be -40.0 )\n Enter your expression : ")
     rs=calculator(inp)
     if rs!="None": print(rs)
     else:print("Invalid Expression !")
